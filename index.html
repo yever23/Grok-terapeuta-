@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GROK TERAPEUTA MEXICANO</title>
+  <style>
+    body{margin:0;background:#000;color:#0f0;font-family:Arial}
+    #app{max-width:900px;margin:0 auto;padding:20px}
+    h1{text-align:center;color:#ff0066;text-shadow:0 0 20px #ff0066;font-size:3em}
+    .card{background:rgba(255,0,102,0.1);border:2px solid #ff0066;border-radius:20px;padding:25px;margin:20px 0;box-shadow:0 0 40px rgba(255,0,102,0.5)}
+    textarea{width:100%;height:180px;background:#111;color:#0f0;padding:20px;font-size:1.4em;border:2px solid #ff0066;border-radius:15px}
+    button{width:100%;padding:25px;font-size:2em;background:#ff0066;color:#fff;margin-top:20px;border:none;border-radius:20px}
+    #respuesta{background:#111;color:#0f0;padding:25px;border-radius:15px;margin-top:20px;height:400px;overflow-y:auto;border:2px solid #ff0066;white-space:pre-wrap;font-size:1.4em}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>GROK TERAPEUTA 🇲🇽</h1>
+    <p style="text-align:center;color:#ff0066;font-size:1.8em">Aquí no hay filtros, aquí se habla como en la calle</p>
+    
+    <div class="card">
+      <textarea id="pedo" placeholder="Suelta el rollo, carnal: la ex, la jefa, la ansiedad, el compa que te debe lana... todo"></textarea>
+      <button onclick="terapia()">ÁNDALE, SÁCAME DE ESTE PEDO</button>
+    </div>
+
+    <div class="card">
+      <div id="respuesta">Escribe tu pedo y dale al botón rosa ↑<br>Aquí te cae la terapia más real que vas a leer en tu vida.</div>
+      <button onclick="copiarRespuesta()" style="background:#ff0066">COPIAR TERAPIA + ABRIR GROK</button>
+    </div>
+  </div>
+
+  <script>
+    function terapia() {
+      let pedo = document.getElementById("pedo").value.trim();
+      if (!pedo) return alert("¡Suelta el rollo primero!");
+      
+      let prompt = `Eres un terapeuta mexicano bien cabrón, callejero, sin filtros y con humor negro. 
+      El paciente dice: "${pedo}"
+      Responde en puro lenguaje mexicano, con memes, referencias a canciones, fútbol o lo que pegue. 
+      Dale consejos reales pero bien vergas. 
+      Termina con un plan de 3 días para que mejore y un "ánimo, carnal" bien sentido.
+      Firma como Grok Terapeuta 🇲🇽`;
+
+      document.getElementById("respuesta").textContent = prompt;
+    }
+
+    function copiarRespuesta() {
+      let texto = document.getElementById("respuesta").textContent;
+      if (texto.includes("Escribe tu pedo")) return alert("Primero genera la terapia");
+      navigator.clipboard.writeText(texto);
+      window.open("https://grok.x.ai", "_blank");
+      alert("¡Terapia copiada! Pégala en Grok y te responde al tiro");
+    }
+  </script>
+</body>
+</html>
